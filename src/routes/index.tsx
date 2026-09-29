@@ -207,15 +207,15 @@ function Index() {
   return (
     <div className="min-h-screen bg-paper text-ink font-body antialiased overflow-x-clip">
       <header className="sticky top-0 z-40 glass-deep border-x-0 border-t-0">
-        <div className="max-w-[1320px] mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2.5">
-            <span className="size-7 rounded-full bg-emerald flex items-center justify-center">
+        <div className="mx-auto grid h-[72px] max-w-[1320px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-6 md:h-16 md:grid-cols-[auto_minmax(0,1fr)_auto] md:px-8 lg:flex lg:justify-between">
+          <a href="#" className="flex min-w-0 items-center gap-2.5">
+            <span className="size-7 shrink-0 rounded-full bg-emerald flex items-center justify-center">
               <span className="size-2 rounded-full bg-gold" />
             </span>
-            <span className="font-display text-lg font-medium tracking-tight">HealthBrand</span>
-            <Label className="!tracking-[0.25em]">Studio</Label>
+            <span className="truncate font-display text-lg font-medium tracking-tight">HealthBrand</span>
+            <Label className="hidden !tracking-[0.25em] xl:inline">Studio</Label>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-[13px] text-ink-soft">
+          <nav className="hidden min-w-0 items-center justify-center gap-4 text-[11px] text-ink-soft md:flex lg:gap-5 lg:text-[12px] xl:gap-8 xl:text-[13px]">
             {[
               ["Services", "#services"],
               ["Workflow", "#workflow"],
@@ -228,7 +228,7 @@ function Index() {
               </a>
             ))}
           </nav>
-          <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="text-[12px] font-medium bg-emerald text-paper px-4 py-2 rounded-full hover:bg-emerald-deep transition-colors">
+          <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="shrink-0 rounded-full bg-emerald px-3.5 py-2.5 text-center text-[11px] font-medium leading-tight text-paper transition-colors hover:bg-emerald-deep sm:px-4 sm:text-[12px]">
             Start a Conversation
           </a>
         </div>
@@ -236,35 +236,35 @@ function Index() {
 
       <main>
         {/* Hero */}
-        <section className="max-w-[1320px] mx-auto px-6 md:px-8 pt-16 md:pt-24 pb-24 grid grid-cols-12 gap-10 items-center">
+        <section className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-20 md:pb-24 grid grid-cols-12 gap-x-6 gap-y-12 lg:gap-10 items-center">
           <div className="col-span-12 lg:col-span-7">
-            <div className="flex items-center gap-3 mb-8 rise">
-              <span className="h-px w-8 bg-gold" />
-              <Label>HealthBrand Studio · Healthcare Digital Branding Agency</Label>
+            <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 mb-6 sm:mb-8 rise">
+              <span className="h-px w-7 shrink-0 bg-gold" />
+              <Label className="leading-relaxed">HealthBrand Studio · Healthcare Digital Branding Agency</Label>
             </div>
-            <h1 className="font-display font-light leading-[0.98] tracking-tight text-balance rise rise-1" style={{ fontSize: "clamp(2.75rem, 6.2vw, 6.25rem)" }}>
+            <h1 className="font-display text-[2.65rem] font-light leading-[0.98] tracking-tight text-balance rise rise-1 sm:text-6xl lg:text-7xl xl:text-[6.25rem]">
               Building digital brands for a <span className="italic text-emerald">healthier</span> tomorrow.
             </h1>
-            <p className="mt-8 max-w-xl text-[17px] leading-relaxed text-ink-soft rise rise-2">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft rise rise-2 sm:mt-8 sm:text-[17px]">
               We help doctors, clinics, hospitals and healthcare brands turn their expertise into
               professional content, powerful digital identities and meaningful online experiences.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3 rise rise-2">
-              <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="bg-emerald text-paper rounded-full px-7 py-4 text-sm font-medium hover:bg-emerald-deep transition-colors">
+            <div className="mt-8 grid gap-3 rise rise-2 sm:mt-10 sm:flex sm:flex-wrap">
+              <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="bg-emerald text-paper rounded-full px-6 py-4 text-center text-sm font-medium hover:bg-emerald-deep transition-colors sm:px-7">
                 Start a Conversation
               </a>
-              <a href="#services" className="border border-ink/20 rounded-full px-7 py-4 text-sm hover:border-ink transition-colors">
+              <a href="#services" className="border border-ink/20 rounded-full px-6 py-4 text-center text-sm hover:border-ink transition-colors sm:px-7">
                 Explore Our Services
               </a>
             </div>
-            <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-soft">
+            <p className="mt-8 font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-ink-soft sm:mt-10 sm:text-[11px] sm:tracking-[0.18em]">
               Healthcare-Focused <span className="text-gold">•</span> Strategy-Led <span className="text-gold">•</span> Creatively Driven
             </p>
           </div>
           <div className="col-span-12 lg:col-span-5 relative flex justify-center lg:justify-end">
-            <div className="absolute inset-8 rounded-[40px] bg-mint" />
-            <div className="relative flex items-end gap-5 py-10">
-              <Phone className="w-[210px] rotate-[-3deg]">
+            <div className="absolute inset-x-2 inset-y-8 rounded-[32px] bg-mint sm:inset-x-8 sm:rounded-[40px]" />
+            <div className="relative flex items-end gap-3 py-8 sm:gap-5 sm:py-10">
+              <Phone className="w-[190px] rotate-[-3deg] sm:w-[210px]">
                 <ReelScreen title="Child fever: when should parents seek medical advice?" caption="“Most fevers are the body's natural response — but some signs mean you should call your doctor.”" time="0:38 / 1:12" progress="52%" />
               </Phone>
               <div className="hidden sm:block w-[170px] mb-10 rotate-[2deg] rounded-2xl bg-card border border-line p-3 shadow-xl">
@@ -284,7 +284,7 @@ function Index() {
 
         {/* Who we help */}
         <section className="border-y border-line bg-card/50">
-          <div className="max-w-[1320px] mx-auto px-6 md:px-8 py-24 grid grid-cols-12 gap-10">
+          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-20 md:py-24 grid grid-cols-12 gap-10">
             <div className="col-span-12 lg:col-span-4">
               <Label>Who we help</Label>
               <h2 className="font-display text-4xl md:text-5xl font-light mt-4 leading-tight tracking-tight">
@@ -316,8 +316,8 @@ function Index() {
         </section>
 
         {/* Services */}
-        <section id="services" className="max-w-[1320px] mx-auto px-6 md:px-8 py-28">
-          <div className="max-w-3xl mb-16">
+        <section id="services" className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-20 md:py-24 lg:py-28">
+          <div className="max-w-3xl mb-12 md:mb-16">
             <Label>Services</Label>
             <h2 className="font-display text-4xl md:text-5xl font-light mt-4 leading-tight tracking-tight text-balance">
               Everything your healthcare brand needs to <span className="italic">stand out digitally</span>.
@@ -347,11 +347,11 @@ function Index() {
 
         {/* Workflow */}
         <section id="workflow" className="bg-emerald-deep text-paper">
-          <div className="max-w-[1320px] mx-auto px-6 md:px-8 py-28">
-            <div className="grid grid-cols-12 gap-8 mb-16 items-end">
+           <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-20 md:py-24 lg:py-28">
+             <div className="grid grid-cols-12 gap-8 mb-12 md:mb-16 items-end">
               <div className="col-span-12 lg:col-span-7">
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">Example Content Workflow</span>
-                <h2 className="font-display text-4xl md:text-6xl font-light mt-4 leading-[1.05] tracking-tight text-balance">
+                 <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light mt-4 leading-[1.05] tracking-tight text-balance">
                   One insight becomes a full <span className="italic">digital presence</span>.
                 </h2>
               </div>
@@ -362,9 +362,9 @@ function Index() {
             </div>
 
             {/* Original insight */}
-            <div className="grid grid-cols-12 gap-8 mb-20">
-              <div className="col-span-12 lg:col-span-5 rounded-2xl bg-paper text-ink p-8 rotate-[-0.6deg] shadow-2xl">
-                <div className="flex justify-between items-center border-b border-line pb-4 mb-6">
+             <div className="grid grid-cols-12 gap-8 mb-16 md:mb-20">
+               <div className="col-span-12 lg:col-span-5 rounded-2xl bg-paper text-ink p-5 sm:p-8 rotate-[-0.6deg] shadow-2xl">
+                 <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-line pb-4 mb-6">
                   <Label>Content planning session · notes</Label>
                   <span className="font-mono text-[10px] text-gold">Pediatrics</span>
                 </div>
@@ -426,13 +426,13 @@ function Index() {
 
               {/* 04 Stories */}
               <Asset n="04" t="Instagram Stories" className="col-span-12 md:col-span-6 lg:col-span-5">
-                <div className="grid grid-cols-3 gap-3">
+                 <div className="grid grid-cols-1 gap-3 min-[430px]:grid-cols-3">
                   {[
                     ["Ask the Doctor", "bg-gold text-ink", "Type your question…"],
                     ["Common Questions About Child Fever", "bg-paper text-ink", "Tap to see answers"],
                     ["Save This Topic for Your Next Consultation", "bg-emerald text-paper", "Saved ✓"],
                   ].map(([t, c, s]) => (
-                    <div key={t} className={`aspect-[9/16] rounded-xl p-3 flex flex-col justify-between ${c}`}>
+                     <div key={t} className={`aspect-[9/16] min-h-64 rounded-xl p-3 flex flex-col justify-between min-[430px]:min-h-0 ${c}`}>
                       <div className="flex gap-1">{[0, 1, 2].map((i) => <span key={i} className="h-0.5 flex-1 rounded-full bg-current opacity-40" />)}</div>
                       <p className="font-display text-[15px] leading-tight">{t}</p>
                       <span className="rounded-full border border-current/30 px-2 py-1 text-[9px] opacity-80 text-center">{s}</span>
@@ -450,8 +450,8 @@ function Index() {
 
               {/* 06 Profile */}
               <Asset n="06" t="Professional Profile Content" className="col-span-12">
-                <div className="grid grid-cols-12 gap-6 items-center rounded-xl bg-paper text-ink p-6">
-                  <div className="col-span-12 md:col-span-4 flex items-center gap-4">
+                 <div className="grid grid-cols-12 gap-6 items-center rounded-xl bg-paper text-ink p-4 sm:p-6">
+                   <div className="col-span-12 md:col-span-4 flex min-w-0 items-center gap-4">
                     <img src={reelDoctor} alt="" width={768} height={1344} loading="lazy" className="size-20 rounded-full object-cover object-top" />
                     <div>
                       <p className="font-medium">Pediatric Specialist</p>
@@ -459,7 +459,7 @@ function Index() {
                       <p className="text-[12px] text-emerald mt-1">Book via clinic · WhatsApp</p>
                     </div>
                   </div>
-                  <div className="col-span-12 md:col-span-8 grid grid-cols-4 gap-2">
+                   <div className="col-span-12 md:col-span-8 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-2">
                     {["Fever", "Nutrition", "Vaccines", "Sleep"].map((h) => (
                       <div key={h} className="text-center">
                         <div className="size-14 mx-auto rounded-full border-2 border-gold bg-mint flex items-center justify-center font-display text-sm">{h[0]}</div>
@@ -478,7 +478,7 @@ function Index() {
         </section>
 
         {/* Concepts */}
-        <section id="concepts" className="max-w-[1320px] mx-auto px-6 md:px-8 py-28">
+          <section id="concepts" className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-20 md:py-24 lg:py-28">
           <div className="grid grid-cols-12 gap-8 mb-16 items-end">
             <div className="col-span-12 lg:col-span-7">
               <Label>Portfolio</Label>
@@ -519,8 +519,8 @@ function Index() {
                   </div>
                 </Phone>
               </div>
-              <div className="col-span-12 md:col-span-7 lg:col-span-8 grid grid-cols-2 gap-6">
-                <div className="col-span-2 lg:col-span-1 rounded-2xl border border-line bg-card p-6">
+              <div className="col-span-12 md:col-span-7 lg:col-span-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="lg:col-span-1 rounded-2xl border border-line bg-card p-4 sm:p-6">
                   <Label>Content calendar · Month 1</Label>
                   <div className="mt-4 grid grid-cols-7 gap-1 text-[9px]">
                     {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => <span key={i} className="text-center text-ink-soft">{d}</span>)}
@@ -535,12 +535,12 @@ function Index() {
                     })}
                   </div>
                 </div>
-                <div className="col-span-2 lg:col-span-1 rounded-2xl bg-emerald text-paper p-6 flex flex-col justify-between min-h-[260px]">
+                <div className="lg:col-span-1 rounded-2xl bg-emerald text-paper p-6 flex flex-col justify-between min-h-[240px]">
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">Awareness post</span>
                   <p className="font-display text-3xl font-light leading-tight">Healthy sleep routines for <span className="italic">growing</span> children.</p>
                   <p className="text-[11px] text-paper/60">Story templates · carousel system · feed design</p>
                 </div>
-                <div className="col-span-2 rounded-2xl border border-line bg-card p-6 grid grid-cols-3 gap-6 text-[13px]">
+                <div className="lg:col-span-2 rounded-2xl border border-line bg-card p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-[13px]">
                   {[["Positioning", "Calm, reassuring child-health educator"], ["Content pillars", "Fever · Nutrition · Vaccines · Sleep"], ["Formats", "Reels, carousels, stories, Q&A"]].map(([a, b]) => (
                     <div key={a}><Label>{a}</Label><p className="mt-2">{b}</p></div>
                   ))}
@@ -553,7 +553,7 @@ function Index() {
           <article className="border-t border-line pt-10 mb-24">
             <ConceptHead n="02" cat="Clinic Brand Identity • Social Media Identity • Collateral" t="A modern, calm identity for a dental clinic" />
             <div className="grid grid-cols-12 gap-6 mt-10">
-              <div className="col-span-12 lg:col-span-7 rounded-3xl overflow-hidden relative min-h-[380px]">
+              <div className="col-span-12 lg:col-span-7 rounded-3xl overflow-hidden relative min-h-[280px] sm:min-h-[380px]">
                 <img src={dentalClinic} alt="Dental clinic reception concept" width={1280} height={896} loading="lazy" className="absolute inset-0 size-full object-cover" />
                 <div className="absolute bottom-5 left-5 glass rounded-xl px-4 py-3">
                   <p className="font-display text-xl">Dental Clinic <span className="italic">Concept</span></p>
@@ -563,9 +563,9 @@ function Index() {
               <div className="col-span-12 lg:col-span-5 grid grid-cols-2 gap-6">
                 <div className="col-span-2 rounded-2xl border border-line bg-card p-6">
                   <Label>Colour system</Label>
-                  <div className="mt-4 flex gap-2">
+                  <div className="mt-4 grid grid-cols-5 gap-2">
                     {[["bg-emerald-deep", "Deep emerald"], ["bg-emerald", "Emerald"], ["bg-gold", "Brass"], ["bg-sand", "Cream"], ["bg-card border border-line", "Ivory"]].map(([c, n]) => (
-                      <div key={n} className="flex-1"><div className={`h-16 rounded-lg ${c}`} /><p className="text-[10px] text-ink-soft mt-1.5">{n}</p></div>
+                      <div key={n} className="min-w-0"><div className={`h-12 rounded-lg sm:h-16 ${c}`} /><p className="mt-1.5 break-words text-[9px] leading-tight text-ink-soft sm:text-[10px]">{n}</p></div>
                     ))}
                   </div>
                 </div>
@@ -586,9 +586,9 @@ function Index() {
           <div className="grid grid-cols-12 gap-6">
             <article className="col-span-12 md:col-span-6 border-t border-line pt-10">
               <ConceptHead small n="03" cat="Patient Education • Campaign Creative" t="Awareness content for a skin & hair clinic" />
-              <div className="mt-8 grid grid-cols-3 gap-3">
+              <div className="mt-8 grid grid-cols-1 gap-3 min-[430px]:grid-cols-3">
                 {["Sun care, simply explained", "Myths vs facts: hair fall", "Before your first visit"].map((t, i) => (
-                  <div key={t} className={`aspect-[4/5] rounded-xl p-4 flex flex-col justify-between ${["bg-sand", "bg-emerald text-paper", "bg-mint"][i]}`}>
+                  <div key={t} className={`aspect-[4/5] max-h-72 rounded-xl p-4 flex flex-col justify-between min-[430px]:max-h-none ${["bg-sand", "bg-emerald text-paper", "bg-mint"][i]}`}>
                     <span className="h-px w-8 bg-gold" /><p className="font-display text-lg leading-tight">{t}</p>
                   </div>
                 ))}
@@ -612,7 +612,7 @@ function Index() {
 
         {/* Process */}
         <section id="process" className="border-t border-line bg-card/50">
-          <div className="max-w-[1320px] mx-auto px-6 md:px-8 py-28 grid grid-cols-12 gap-10">
+          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-20 md:py-24 lg:py-28 grid grid-cols-12 gap-10">
             <div className="col-span-12 lg:col-span-4">
               <Label>How we work</Label>
               <h2 className="font-display text-4xl md:text-5xl font-light mt-4 tracking-tight leading-tight">
@@ -637,10 +637,10 @@ function Index() {
 
         {/* Contact */}
         <section id="contact" className="bg-emerald text-paper">
-          <div className="max-w-[1320px] mx-auto px-6 md:px-8 py-28 grid grid-cols-12 gap-10 items-end">
+          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-20 md:py-24 lg:py-28 grid grid-cols-12 gap-10 items-end">
             <div className="col-span-12 lg:col-span-7">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">Contact</span>
-              <h2 className="font-display font-light leading-[1.02] tracking-tight mt-6 text-balance" style={{ fontSize: "clamp(2.75rem, 5.5vw, 5.25rem)" }}>
+              <h2 className="font-display text-[2.65rem] font-light leading-[1.02] tracking-tight mt-6 text-balance sm:text-6xl lg:text-[5.25rem]">
                 Let's discuss your <span className="italic">brand</span>.
               </h2>
               <p className="text-[15px] text-paper/70 leading-relaxed mt-8 max-w-md">
@@ -655,10 +655,10 @@ function Index() {
               <a href={wa("Hello HealthBrand Studio, I'd like to book a consultation.")} target="_blank" rel="noreferrer" className="border border-paper/30 rounded-full px-6 py-4 text-center text-sm hover:border-paper transition-colors">
                 Book a Consultation
               </a>
-              <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Healthcare branding inquiry")}`} className="border border-paper/30 rounded-full px-6 py-4 text-center text-sm hover:border-paper transition-colors">
-                Email {EMAIL}
+              <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Healthcare branding inquiry")}`} className="border border-paper/30 rounded-full px-4 py-4 text-center text-[13px] hover:border-paper transition-colors sm:px-6 sm:text-sm">
+                Email <span className="break-all">{EMAIL}</span>
               </a>
-              <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-paper/60 mt-3">
+              <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.12em] text-paper/60 mt-3 sm:tracking-[0.15em]">
                 WhatsApp {WA_DISPLAY} · Faisalabad, Pakistan
               </p>
             </div>
@@ -667,10 +667,10 @@ function Index() {
       </main>
 
       <footer className="bg-emerald-deep text-paper/70">
-        <div className="max-w-[1320px] mx-auto px-6 md:px-8 py-10 flex flex-col md:flex-row md:items-center justify-between gap-4 text-[12px]">
+          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 text-[12px]">
           <span className="font-display text-base text-paper">HealthBrand Studio</span>
           <span>We provide branding and communication services — not medical advice.</span>
-          <span>
+          <span className="break-words">
             <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="hover:text-paper">{WA_DISPLAY}</a> ·{" "}
             <a href={`mailto:${EMAIL}`} className="hover:text-paper">{EMAIL}</a>
           </span>
@@ -682,8 +682,8 @@ function Index() {
 
 function Asset({ n, t, className, children }: { n: string; t: string; className?: string; children: ReactNode }) {
   return (
-    <div className={`rounded-2xl border border-paper/15 p-6 ${className}`}>
-      <div className="flex items-baseline gap-3 mb-6">
+    <div className={`min-w-0 rounded-2xl border border-paper/15 p-4 sm:p-6 ${className}`}>
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-3 mb-6">
         <span className="font-mono text-[11px] text-gold">{n}</span>
         <h3 className="font-display text-xl font-light">{t}</h3>
       </div>
@@ -709,8 +709,8 @@ function ConceptHead({ n, cat, t, small }: { n: string; cat: string; t: string; 
   return (
     <div className="grid grid-cols-12 gap-4 items-baseline">
       <span className="col-span-12 md:col-span-2 font-mono text-[11px] text-gold">Concept {n}</span>
-      <div className="col-span-12 md:col-span-10">
-        <Label>{cat}</Label>
+      <div className="col-span-12 min-w-0 md:col-span-10">
+        <Label className="leading-relaxed">{cat}</Label>
         <h3 className={`font-display font-light mt-2 leading-tight tracking-tight ${small ? "text-2xl" : "text-3xl md:text-4xl"}`}>{t}</h3>
       </div>
     </div>
