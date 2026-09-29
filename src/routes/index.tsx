@@ -207,7 +207,7 @@ function Index() {
   return (
     <div className="min-h-screen bg-paper text-ink font-body antialiased overflow-x-clip">
       <header className="sticky top-0 z-40 glass-deep border-x-0 border-t-0">
-        <div className="mx-auto grid h-[72px] max-w-[1320px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-6 md:h-16 md:px-8 lg:flex lg:justify-between">
+        <div className="mx-auto grid h-[72px] max-w-[1320px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-6 md:h-16 md:grid-cols-[auto_minmax(0,1fr)_auto] md:px-8 lg:flex lg:justify-between">
           <a href="#" className="flex min-w-0 items-center gap-2.5">
             <span className="size-7 shrink-0 rounded-full bg-emerald flex items-center justify-center">
               <span className="size-2 rounded-full bg-gold" />
@@ -215,7 +215,7 @@ function Index() {
             <span className="truncate font-display text-lg font-medium tracking-tight">HealthBrand</span>
             <Label className="hidden !tracking-[0.25em] xl:inline">Studio</Label>
           </a>
-          <nav className="hidden items-center gap-5 text-[12px] text-ink-soft md:flex xl:gap-8 xl:text-[13px]">
+          <nav className="hidden min-w-0 items-center justify-center gap-4 text-[11px] text-ink-soft md:flex lg:gap-5 lg:text-[12px] xl:gap-8 xl:text-[13px]">
             {[
               ["Services", "#services"],
               ["Workflow", "#workflow"],
