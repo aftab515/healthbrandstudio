@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import reelDoctor from "@/assets/reel-doctor.jpg";
 import dentalClinic from "@/assets/dental-clinic.jpg";
 
@@ -206,33 +206,7 @@ function ReelScreen({ title, caption, time, progress }: { title: string; caption
 function Index() {
   return (
     <div className="min-h-screen bg-paper text-ink font-body antialiased overflow-x-clip">
-      <header className="sticky top-0 z-40 glass-deep border-x-0 border-t-0">
-        <div className="mx-auto grid h-[72px] max-w-[1320px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-6 md:h-16 md:grid-cols-[auto_minmax(0,1fr)_auto] md:px-8 lg:flex lg:justify-between">
-          <a href="#" className="flex min-w-0 items-center gap-2.5">
-            <span className="size-7 shrink-0 rounded-full bg-emerald flex items-center justify-center">
-              <span className="size-2 rounded-full bg-gold" />
-            </span>
-            <span className="truncate font-display text-lg font-medium tracking-tight">HealthBrand</span>
-            <Label className="hidden !tracking-[0.25em] xl:inline">Studio</Label>
-          </a>
-          <nav className="hidden min-w-0 items-center justify-center gap-4 text-[11px] text-ink-soft md:flex lg:gap-5 lg:text-[12px] xl:gap-8 xl:text-[13px]">
-            {[
-              ["Services", "#services"],
-              ["Workflow", "#workflow"],
-              ["Concepts", "#concepts"],
-              ["Process", "#process"],
-              ["Contact", "#contact"],
-            ].map(([l, h]) => (
-              <a key={h} href={h} className="hover:text-ink transition-colors">
-                {l}
-              </a>
-            ))}
-          </nav>
-          <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="shrink-0 rounded-full bg-emerald px-3.5 py-2.5 text-center text-[11px] font-medium leading-tight text-paper transition-colors hover:bg-emerald-deep sm:px-4 sm:text-[12px]">
-            Start a Conversation
-          </a>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main>
         {/* Hero */}
@@ -399,12 +373,14 @@ function Index() {
 
               {/* 02 Carousel */}
               <Asset n="02" t="Educational Carousel" className="col-span-12 md:col-span-6 lg:col-span-8">
-                <div className="flex gap-3 overflow-x-auto pb-2">
-                  <Slide dark k="1/4" title="Child Fever: What Parents Should Know" />
-                  <Slide k="2/4" title="When to Monitor" body="Rest, fluids and comfort. Note temperature and how your child is eating, sleeping and playing." />
-                  <Slide k="3/4" title="When to Contact Your Doctor" body="If you're worried, if the fever persists, or if your child seems unusually unwell — call your doctor." />
-                  <Slide k="4/4" title="Questions Parents Commonly Ask" body="Save this post and bring your questions to your next consultation." />
-                </div>
+                <EduCarousel
+                  slides={[
+                    <Slide dark k="1/4" title="Child Fever: What Parents Should Know" />,
+                    <Slide k="2/4" title="When to Monitor" body="Rest, fluids and comfort. Note temperature and how your child is eating, sleeping and playing." />,
+                    <Slide k="3/4" title="When to Contact Your Doctor" body="If you're worried, if the fever persists, or if your child seems unusually unwell — call your doctor." />,
+                    <Slide k="4/4" title="Questions Parents Commonly Ask" body="Save this post and bring your questions to your next consultation." />,
+                  ]}
+                />
                 <p className="mt-4 text-[12px] text-paper/60">General education only — not a substitute for individual medical advice.</p>
               </Asset>
 
@@ -668,7 +644,7 @@ function Index() {
 
       <footer className="bg-emerald-deep text-paper/70">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 text-[12px]">
-          <span className="font-display text-base text-paper">HealthBrand Studio</span>
+          <span className="flex items-center gap-2.5 font-display text-base text-paper"><BrandMark className="size-7" />HealthBrand Studio</span>
           <span>We provide branding and communication services — not medical advice.</span>
           <span className="break-words">
             <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="hover:text-paper">{WA_DISPLAY}</a> ·{" "}
@@ -712,6 +688,143 @@ function ConceptHead({ n, cat, t, small }: { n: string; cat: string; t: string; 
       <div className="col-span-12 min-w-0 md:col-span-10">
         <Label className="leading-relaxed">{cat}</Label>
         <h3 className={`font-display font-light mt-2 leading-tight tracking-tight ${small ? "text-2xl" : "text-3xl md:text-4xl"}`}>{t}</h3>
+      </div>
+    </div>
+  );
+}
+
+const NAV = [
+  ["Services", "#services"],
+  ["Workflow", "#workflow"],
+  ["Concepts", "#concepts"],
+  ["Process", "#process"],
+  ["Contact", "#contact"],
+];
+
+/* Compact brand mark — swap for the official logo file once provided. */
+function BrandMark({ className = "" }: { className?: string }) {
+  return (
+    <span className={`shrink-0 rounded-full bg-emerald flex items-center justify-center ${className}`}>
+      <span className="size-2 rounded-full bg-gold" />
+    </span>
+  );
+}
+
+function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 12);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, []);
+  useEffect(() => {
+    const on = () => window.innerWidth >= 768 && setOpen(false);
+    window.addEventListener("resize", on);
+    return () => window.removeEventListener("resize", on);
+  }, []);
+  return (
+    <header
+      className={`sticky top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
+        scrolled || open ? "glass-deep border-x-0 border-t-0 shadow-[0_6px_24px_-18px_color-mix(in_oklab,var(--ink)_45%,transparent)]" : "glass-deep border-x-0 border-t-0"
+      }`}
+    >
+      <div
+        className={`mx-auto flex max-w-[1320px] items-center justify-between gap-3 px-4 transition-[height] duration-300 ease-out sm:px-6 md:px-8 ${
+          scrolled ? "h-14" : "h-16 md:h-[72px]"
+        }`}
+      >
+        <a href="#" className="flex min-w-0 items-center gap-2.5" onClick={() => setOpen(false)}>
+          <BrandMark className={`transition-all duration-300 ${scrolled ? "size-6" : "size-7"}`} />
+          <span className="truncate font-display text-lg font-medium tracking-tight">HealthBrand</span>
+          <Label className="hidden !tracking-[0.25em] xl:inline">Studio</Label>
+        </a>
+        <nav className="hidden min-w-0 items-center justify-center gap-4 text-[11px] text-ink-soft md:flex lg:gap-5 lg:text-[12px] xl:gap-8 xl:text-[13px]">
+          {NAV.map(([l, h]) => (
+            <a key={h} href={h} className="hover:text-ink transition-colors">{l}</a>
+          ))}
+        </nav>
+        <div className="flex shrink-0 items-center gap-2">
+          <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="hidden shrink-0 rounded-full bg-emerald px-4 py-2.5 text-[12px] font-medium leading-tight text-paper transition-colors hover:bg-emerald-deep sm:inline-block">
+            Start a Conversation
+          </a>
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((o) => !o)}
+            className="relative size-10 shrink-0 rounded-full border border-line md:hidden"
+          >
+            <span className={`absolute left-1/2 top-1/2 h-px w-4 -translate-x-1/2 bg-ink transition-transform duration-300 ${open ? "rotate-45" : "-translate-y-[4px]"}`} />
+            <span className={`absolute left-1/2 top-1/2 h-px w-4 -translate-x-1/2 bg-ink transition-transform duration-300 ${open ? "-rotate-45" : "translate-y-[4px]"}`} />
+          </button>
+        </div>
+      </div>
+      <div className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out md:hidden ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+        <div className="min-h-0">
+          <nav className="flex flex-col px-4 pb-5 sm:px-6">
+            {NAV.map(([l, h]) => (
+              <a key={h} href={h} onClick={() => setOpen(false)} className="border-b border-line py-3.5 font-display text-lg">{l}</a>
+            ))}
+            <a href={WA_DEFAULT} target="_blank" rel="noreferrer" onClick={() => setOpen(false)} className="mt-5 rounded-full bg-emerald px-5 py-3.5 text-center text-sm font-medium text-paper">
+              Start a Conversation
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+const SLIDE_W = 190;
+const SLIDE_GAP = 12;
+
+function EduCarousel({ slides }: { slides: ReactNode[] }) {
+  const [i, setI] = useState(0);
+  const [drag, setDrag] = useState(0);
+  const start = useRef<number | null>(null);
+  const n = slides.length;
+  const go = (d: number) => setI((v) => Math.min(n - 1, Math.max(0, v + d)));
+  const offset = i * (SLIDE_W + SLIDE_GAP) + SLIDE_W / 2;
+  const btn = "size-10 shrink-0 rounded-full border border-paper/25 text-paper transition-colors hover:border-gold hover:text-gold disabled:opacity-30 disabled:hover:border-paper/25 disabled:hover:text-paper";
+  return (
+    <div role="region" aria-roledescription="carousel" aria-label="Educational carousel">
+      <div
+        className="relative overflow-hidden select-none"
+        style={{ touchAction: "pan-y" }}
+        onPointerDown={(e) => { start.current = e.clientX; (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId); }}
+        onPointerMove={(e) => { if (start.current !== null) setDrag(e.clientX - start.current); }}
+        onPointerUp={() => { if (Math.abs(drag) > 40) go(drag < 0 ? 1 : -1); start.current = null; setDrag(0); }}
+        onPointerCancel={() => { start.current = null; setDrag(0); }}
+        onKeyDown={(e) => { if (e.key === "ArrowRight") go(1); if (e.key === "ArrowLeft") go(-1); }}
+        tabIndex={0}
+      >
+        <div
+          className={`flex w-full ${start.current === null ? "transition-transform duration-500 ease-[cubic-bezier(0.22,0.8,0.2,1)]" : ""}`}
+          style={{ gap: SLIDE_GAP, transform: `translateX(calc(50% - ${offset}px + ${drag}px))` }}
+        >
+          {slides.map((s, k) => (
+            <div
+              key={k}
+              aria-hidden={k !== i}
+              onClick={() => k !== i && setI(k)}
+              className={`shrink-0 transition-[opacity,transform] duration-500 ${k === i ? "opacity-100 scale-100" : "opacity-40 scale-[0.92] cursor-pointer"}`}
+              style={{ width: SLIDE_W }}
+            >
+              {s}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-5 flex items-center justify-between gap-4">
+        <button type="button" aria-label="Previous slide" className={btn} onClick={() => go(-1)} disabled={i === 0}>←</button>
+        <div className="flex items-center gap-2">
+          {slides.map((_, k) => (
+            <button key={k} type="button" aria-label={`Go to slide ${k + 1}`} onClick={() => setI(k)} className={`h-1.5 rounded-full transition-all duration-300 ${k === i ? "w-6 bg-gold" : "w-1.5 bg-paper/30"}`} />
+          ))}
+        </div>
+        <button type="button" aria-label="Next slide" className={btn} onClick={() => go(1)} disabled={i === n - 1}>→</button>
       </div>
     </div>
   );
