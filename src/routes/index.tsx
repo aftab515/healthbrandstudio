@@ -643,13 +643,13 @@ function Index() {
         </section>
       </main>
 
-      <footer className="bg-emerald-deep text-paper/70">
-          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 text-[12px]">
-          <span className="flex items-center gap-2.5 font-display text-base text-paper"><BrandMark className="size-7" />HealthBrand Studio</span>
+      <footer className="glass-deep border-x-0 border-b-0 text-ink">
+          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 text-[12px] text-ink-soft">
+          <span className="flex items-center gap-2.5 font-display text-base text-ink"><BrandMark className="size-7" />HealthBrand Studio</span>
           <span>We provide branding and communication services — not medical advice.</span>
           <span className="break-words">
-            <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="hover:text-paper">{WA_DISPLAY}</a> ·{" "}
-            <a href={`mailto:${EMAIL}`} className="hover:text-paper">{EMAIL}</a>
+            <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="hover:text-ink transition-colors">{WA_DISPLAY}</a> ·{" "}
+            <a href={`mailto:${EMAIL}`} className="hover:text-ink transition-colors">{EMAIL}</a>
           </span>
         </div>
       </footer>
