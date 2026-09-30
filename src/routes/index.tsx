@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import reelDoctor from "@/assets/reel-doctor.jpg";
 import dentalClinic from "@/assets/dental-clinic.jpg";
+import logoAsset from "@/assets/healthbrand-mark.png.asset.json";
 
 const WA_NUMBER = "923007920009";
 const WA_DISPLAY = "+92 300 792 0009";
@@ -701,12 +702,14 @@ const NAV = [
   ["Contact", "#contact"],
 ];
 
-/* Compact brand mark — swap for the official logo file once provided. */
+/* Official HealthBrand Studio logo (H + medical cross mark). */
 function BrandMark({ className = "" }: { className?: string }) {
   return (
-    <span className={`shrink-0 rounded-full bg-emerald flex items-center justify-center ${className}`}>
-      <span className="size-2 rounded-full bg-gold" />
-    </span>
+    <img
+      src={logoAsset.url}
+      alt="HealthBrand Studio logo"
+      className={`shrink-0 object-contain ${className}`}
+    />
   );
 }
 
