@@ -204,7 +204,42 @@ function ReelScreen({ title, caption, time, progress }: { title: string; caption
   );
 }
 
+/* Scroll reveals: tags existing elements (no markup changes) and reveals them on view. */
+function useScrollReveal() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const sections = Array.from(document.querySelectorAll("main section:not(:first-of-type), footer"));
+    const targets = new Set<HTMLElement>();
+    sections.forEach((sec) => {
+      sec.querySelectorAll<HTMLElement>("h2, h2 + p, [class*='grid-cols'] > *, ul > li, img").forEach((el) => {
+        if (el.closest("[data-carousel]")) return;
+        targets.add(el);
+      });
+      if (sec.tagName === "FOOTER") targets.add(sec as HTMLElement);
+    });
+    targets.forEach((el) => {
+      const idx = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+      el.style.setProperty("--reveal-delay", `${Math.min(idx, 6) * 70}ms`);
+      el.classList.add(el.tagName === "IMG" ? "reveal-img" : "reveal");
+    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
 function Index() {
+  useScrollReveal();
   return (
     <div className="min-h-screen bg-paper text-ink font-body antialiased overflow-x-clip">
       <SiteHeader />
