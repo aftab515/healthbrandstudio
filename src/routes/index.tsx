@@ -271,7 +271,7 @@ function Index() {
               Healthcare-Focused <span className="text-gold">•</span> Strategy-Led <span className="text-gold">•</span> Creatively Driven
             </p>
           </div>
-          <div className="col-span-12 lg:col-span-5 relative flex justify-center lg:justify-end">
+          <div className="col-span-12 lg:col-span-5 relative flex justify-center lg:justify-end rise rise-3">
             <div className="absolute inset-x-2 inset-y-8 rounded-[32px] bg-mint sm:inset-x-8 sm:rounded-[40px]" />
             <div className="relative flex items-end gap-3 py-8 sm:gap-5 sm:py-10">
               <Phone className="w-[190px] rotate-[-3deg] sm:w-[210px]">
