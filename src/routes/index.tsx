@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import reelDoctor from "@/assets/reel-doctor.jpg";
 import dentalClinic from "@/assets/dental-clinic.jpg";
@@ -664,9 +664,9 @@ function Index() {
               <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="bg-gold text-ink rounded-full px-6 py-4 text-center text-sm font-medium hover:opacity-90 transition-opacity">
                 Start a Conversation on WhatsApp
               </a>
-              <a href={wa("Hello HealthBrand Studio, I'd like to book a consultation.")} target="_blank" rel="noreferrer" className="border border-paper/30 rounded-full px-6 py-4 text-center text-sm hover:border-paper transition-colors">
+              <Link to="/consultation" className="border border-paper/30 rounded-full px-6 py-4 text-center text-sm hover:border-paper transition-colors">
                 Book a Consultation
-              </a>
+              </Link>
               <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Healthcare branding inquiry")}`} className="border border-paper/30 rounded-full px-4 py-4 text-center text-[13px] hover:border-paper transition-colors sm:px-6 sm:text-sm">
                 Email <span className="break-all">{EMAIL}</span>
               </a>
