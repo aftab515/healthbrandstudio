@@ -134,6 +134,85 @@
   animation-delay: 180ms;
 }
 
+@utility rise-3 {
+  animation-delay: 300ms;
+}
+
+/* Premium motion layer */
+header {
+  animation: rise 600ms cubic-bezier(0.22, 0.8, 0.2, 1) both;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 0.8, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 700ms cubic-bezier(0.22, 0.8, 0.2, 1) var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal-img {
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 900ms ease-out,
+    transform 1200ms cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+.reveal-img.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.overflow-hidden:hover > img.is-visible {
+  transform: scale(1.03);
+}
+
+main a.rounded-full,
+header a.rounded-full,
+main button {
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease,
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease;
+}
+main a.rounded-full:hover,
+header a.rounded-full:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -14px color-mix(in oklab, var(--emerald) 60%, transparent);
+}
+main a.rounded-full:active,
+header a.rounded-full:active,
+main button:active {
+  transform: scale(0.98);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal-img {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @utility glass {
   background: color-mix(in oklab, white 42%, transparent);
   backdrop-filter: blur(14px);
