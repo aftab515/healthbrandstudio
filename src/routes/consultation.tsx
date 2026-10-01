@@ -37,7 +37,6 @@ const TOPICS = [
 type Form = { name: string; phone: string; email: string; org: string; role: string; topic: string; notes: string };
 const EMPTY: Form = { name: "", phone: "", email: "", org: "", role: "", topic: "", notes: "" };
 type Step = 0 | 1 | 2 | 3;
-const STEPS = ["Details", "Review", "Payment", "Verification"];
 
 function validate(f: Form) {
   const e: Partial<Record<keyof Form, string>> = {};
@@ -323,7 +322,7 @@ function ConsultationPage() {
   );
 }
 
-function Field({ label, err, children }: { label: string; err?: string; children: ReactNode }) {
+function Field({ label, err, children }: { label: string; err?: string | undefined; children: ReactNode }) {
   return (
     <label className="block">
       <Label>{label}</Label>
