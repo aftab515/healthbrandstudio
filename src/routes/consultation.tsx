@@ -8,17 +8,36 @@ export const Route = createFileRoute("/consultation")({
       { title: "Book a Consultation — HealthBrand Studio" },
       {
         name: "description",
-        content: "Book a paid consultation with HealthBrand Studio to discuss your healthcare brand and digital presence.",
+        content:
+          "Book a paid consultation with HealthBrand Studio to discuss your healthcare brand and digital presence.",
       },
-      { property: "og:title", content: "Book a Consultation — HealthBrand Studio" },
+      {
+        property: "og:title",
+        content: "Book a Consultation — HealthBrand Studio",
+      },
       {
         property: "og:description",
-        content: "Discuss your healthcare brand, digital presence and how you communicate online.",
+        content:
+          "Discuss your healthcare brand, digital presence and how you communicate online.",
       },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        name: "twitter:card",
+        content: "summary",
+      },
+    ],
+
+    links: [
+      {
+        rel: "canonical",
+        href: "https://aftab515.github.io/healthbrandstudio/consultation/",
+      },
     ],
   }),
+
   component: ConsultationPage,
 });
 
