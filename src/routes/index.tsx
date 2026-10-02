@@ -741,7 +741,7 @@ const NAV = [
 function BrandMark({ className = "" }: { className?: string }) {
   return (
     <img
-      src={logoAsset.url}
+      src={logoAsset}
       alt="HealthBrand Studio logo"
       className={`shrink-0 object-contain ${className}`}
     />
