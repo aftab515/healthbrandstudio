@@ -27,7 +27,10 @@ export const Route = createFileRoute("/")({
         content: "Building digital brands for a healthier tomorrow.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://aftab515.github.io/healthbrandstudio/social-share.png" },
+      { property: "og:image:alt", content: "HealthBrand Studio — Healthcare Digital Branding Agency" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://aftab515.github.io/healthbrandstudio/social-share.png" },
     ],
     links: [
   {
