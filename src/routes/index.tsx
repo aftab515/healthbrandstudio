@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import reelDoctor from "@/assets/reel-doctor.jpg";
 import dentalClinic from "@/assets/dental-clinic.jpg";
-import logoAsset from "@/assets/HBS.png";
+import logoAsset from "@/assets/HBS transparent.png";
 
 const WA_NUMBER = "923007920009";
 const WA_DISPLAY = "+92 300 792 0009";
