@@ -25,8 +25,20 @@ export const Route = createFileRoute("/consultation")({
         content: "website",
       },
       {
+        property: "og:image",
+        content: "https://aftab515.github.io/healthbrandstudio/social-share.png",
+      },
+      {
+        property: "og:image:alt",
+        content: "HealthBrand Studio — Healthcare Digital Branding Agency",
+      },
+      {
         name: "twitter:card",
-        content: "summary",
+        content: "summary_large_image",
+      },
+      {
+        name: "twitter:image",
+        content: "https://aftab515.github.io/healthbrandstudio/social-share.png",
       },
     ],
 
