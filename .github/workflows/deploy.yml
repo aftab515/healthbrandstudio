@@ -17,7 +17,7 @@ concurrency:
 
 env:
   GITHUB_PAGES: "true"
-  VITE_BASE_PATH: "/screen-snap-art-83"
+  VITE_BASE_PATH: "/healthbrandstudio"
 
 jobs:
   build:
