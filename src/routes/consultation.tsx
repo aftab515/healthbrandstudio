@@ -5,24 +5,28 @@ import { CONSULTATION, feeLabel } from "@/lib/consultation-config";
 export const Route = createFileRoute("/consultation")({
   head: () => ({
     meta: [
-      { title: "Book a Consultation — HealthBrand Studio" },
+      { title: "Healthcare Branding Consultation — HealthBrand Studio" },
       {
         name: "description",
         content:
-          "Book a paid consultation with HealthBrand Studio to discuss your healthcare brand and digital presence.",
+          "Book a paid healthcare branding consultation to discuss social media, personal branding or content. Confirmation follows manual payment verification.",
       },
       {
         property: "og:title",
-        content: "Book a Consultation — HealthBrand Studio",
+        content: "Healthcare Branding Consultation — HealthBrand Studio",
       },
       {
         property: "og:description",
         content:
-          "Discuss your healthcare brand, digital presence and how you communicate online.",
+          "Book a paid healthcare branding consultation to discuss social media, personal branding or content. Confirmation follows manual payment verification.",
       },
       {
         property: "og:type",
         content: "website",
+      },
+      {
+        property: "og:url",
+        content: "https://aftab515.github.io/healthbrandstudio/consultation/",
       },
       {
         property: "og:image",
@@ -42,6 +46,37 @@ export const Route = createFileRoute("/consultation")({
       },
     ],
 
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://aftab515.github.io/healthbrandstudio/consultation/#webpage",
+              url: "https://aftab515.github.io/healthbrandstudio/consultation/",
+              name: "Healthcare Branding Consultation — HealthBrand Studio",
+              description: "Book a paid healthcare branding consultation to discuss social media, personal branding or content. Confirmation follows manual payment verification.",
+              mainEntity: { "@id": "https://aftab515.github.io/healthbrandstudio/consultation/#service" },
+            },
+            {
+              "@type": "Service",
+              "@id": "https://aftab515.github.io/healthbrandstudio/consultation/#service",
+              name: "Healthcare Branding Consultation",
+              url: "https://aftab515.github.io/healthbrandstudio/consultation/",
+              description: "Consultation about social media management, doctor personal branding, healthcare content and clinic or hospital brand identity.",
+              provider: {
+                "@type": "Organization",
+                "@id": "https://aftab515.github.io/healthbrandstudio/#organization",
+                name: "HealthBrand Studio",
+                url: "https://aftab515.github.io/healthbrandstudio/",
+              },
+            },
+          ],
+        }),
+      },
+    ],
     links: [
       {
         rel: "canonical",
@@ -170,9 +205,9 @@ function ConsultationPage() {
           {step === 0 && (
             <>
               <div className="flex items-center gap-3 mb-5"><span className="h-px w-7 bg-gold" /><Label>Consultation</Label></div>
-              <h1 className="font-display text-4xl sm:text-5xl font-light leading-[1.05] tracking-tight">Book a Consultation</h1>
+              <h1 className="font-display text-4xl sm:text-5xl font-light leading-[1.05] tracking-tight">Book a Healthcare Branding Consultation</h1>
               <p className="mt-5 text-[16px] leading-relaxed text-ink-soft max-w-xl">
-                Let's discuss your healthcare brand, current digital presence and the opportunities to strengthen how you communicate online.
+                Discuss social media management, doctor personal branding, healthcare content or clinic and hospital brand identity. This is a branding consultation, not medical advice.
               </p>
               <p className="mt-4 inline-flex items-center gap-2 rounded-full bg-mint px-4 py-2 text-[13px] text-emerald">
                 <span className="size-1.5 rounded-full bg-gold" /> Consultations are confirmed after payment verification.

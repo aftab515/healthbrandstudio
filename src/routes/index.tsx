@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import reelDoctor from "@/assets/reel-doctor.jpg";
 import dentalClinic from "@/assets/dental-clinic.jpg";
@@ -19,18 +19,35 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Healthcare digital branding and social media for doctors, clinics, hospitals and healthcare brands. Based in Faisalabad, Pakistan.",
+          "Healthcare digital branding, social media management and personal branding for doctors, clinics and hospitals. Based in Faisalabad, Pakistan.",
       },
       { property: "og:title", content: "HealthBrand Studio — Healthcare Digital Branding" },
       {
         property: "og:description",
-        content: "Building digital brands for a healthier tomorrow.",
+        content: "Healthcare digital branding, social media management and personal branding for doctors, clinics and hospitals. Based in Faisalabad, Pakistan.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://aftab515.github.io/healthbrandstudio/" },
       { property: "og:image", content: "https://aftab515.github.io/healthbrandstudio/social-share.png" },
       { property: "og:image:alt", content: "HealthBrand Studio — Healthcare Digital Branding Agency" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "https://aftab515.github.io/healthbrandstudio/social-share.png" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://aftab515.github.io/healthbrandstudio/#organization",
+          name: "HealthBrand Studio",
+          url: "https://aftab515.github.io/healthbrandstudio/",
+          logo: new URL(logoAsset, "https://aftab515.github.io/healthbrandstudio/").href,
+          email: EMAIL,
+          telephone: WA_DISPLAY,
+          description: "Healthcare digital branding, social media management and personal branding for doctors, clinics and hospitals. Based in Faisalabad, Pakistan.",
+        }),
+      },
     ],
     links: [
   {
@@ -184,7 +201,7 @@ function Phone({ children, className = "" }: { children: ReactNode; className?: 
 function ReelScreen({ title, caption, time, progress }: { title: string; caption: string; time: string; progress: string }) {
   return (
     <div className="absolute inset-0">
-      <img src={reelDoctor} alt="Pediatrician explaining child fever to camera" width={768} height={1344} loading="lazy" className="absolute inset-0 size-full object-cover" />
+      <img src={reelDoctor} alt="Example healthcare educational reel about child fever" width={768} height={1344} loading="lazy" className="absolute inset-0 size-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-ink/85" />
       <div className="absolute top-8 left-3 right-3 flex items-center justify-between">
         <span className="font-mono text-[8px] uppercase tracking-[0.2em] text-paper/90">Reel</span>
@@ -265,8 +282,8 @@ function Index() {
               Building digital brands for a <span className="italic text-emerald">healthier</span> tomorrow.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft rise rise-2 sm:mt-8 sm:text-[17px]">
-              We help doctors, clinics, hospitals and healthcare brands turn their expertise into
-              professional content, powerful digital identities and meaningful online experiences.
+              Based in Faisalabad, Pakistan, we help doctors, clinics, hospitals and healthcare brands
+              with social media management, personal branding and healthcare content creation.
             </p>
             <div className="mt-8 grid gap-3 rise rise-2 sm:mt-10 sm:flex sm:flex-wrap">
               <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="bg-emerald text-paper rounded-full px-6 py-4 text-center text-sm font-medium hover:bg-emerald-deep transition-colors sm:px-7">
@@ -339,7 +356,7 @@ function Index() {
           <div className="max-w-3xl mb-12 md:mb-16">
             <Label>Services</Label>
             <h2 className="font-display text-[2rem] sm:text-4xl md:text-5xl font-light mt-4 leading-tight tracking-tight text-balance">
-              Everything your healthcare brand needs to <span className="italic">stand out digitally</span>.
+              Digital branding services for <span className="italic">healthcare professionals and organizations</span>.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 lg:gap-x-12 sm:gap-y-16">
@@ -361,6 +378,11 @@ function Index() {
           <p className="mt-16 text-[13px] text-ink-soft max-w-2xl">
             We focus on communication quality and consistency. We do not promise patients,
             appointments, leads, revenue or medical outcomes.
+          </p>
+          <p className="mt-4 text-[14px] text-emerald">
+            <a href={`${import.meta.env.BASE_URL}consultation/`} className="underline underline-offset-4">
+              Discuss your healthcare branding needs in a consultation.
+            </a>
           </p>
         </section>
 
@@ -673,9 +695,9 @@ function Index() {
               <a href={WA_DEFAULT} target="_blank" rel="noreferrer" className="bg-gold text-ink rounded-full px-6 py-4 text-center text-sm font-medium hover:opacity-90 transition-opacity">
                 Start a Conversation on WhatsApp
               </a>
-              <Link to="/consultation" className="border border-paper/30 rounded-full px-6 py-4 text-center text-sm hover:border-paper transition-colors">
+              <a href={`${import.meta.env.BASE_URL}consultation/`} className="border border-paper/30 rounded-full px-6 py-4 text-center text-sm hover:border-paper transition-colors">
                 Book a Consultation
-              </Link>
+              </a>
               <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Healthcare branding inquiry")}`} className="border border-paper/30 rounded-full px-4 py-4 text-center text-[13px] hover:border-paper transition-colors sm:px-6 sm:text-sm">
                 Email <span className="break-all">{EMAIL}</span>
               </a>
